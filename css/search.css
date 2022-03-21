@@ -1,0 +1,25 @@
+
+/*
+	Ce fichier est appelé uniquement par search.html
+	Ce fichier contient le style de la page de recherche (à la fois des éléments présents avant une recherche, mais aussi de ceux qui apparaissent après).
+*/
+
+#search-input {
+	display: block;
+	width: 40%;
+	height: 35px;
+	margin: auto;
+	border: 1px solid #e0e0d1;
+}
+
+#search_results_area {
+	width: 60%;
+	margin: auto;
+	padding: 10px;
+}
+
+.search-result-element {
+	text-decoration: none;
+	color: black;
+	font-size: 1.2em;
+}

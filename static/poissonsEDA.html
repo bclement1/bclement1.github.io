@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Article - Say it with Data!</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/header.css">
+		<link rel="stylesheet" type="text/css" href="../css/article.css">
+		<meta name="image" property="og:image" content=”https://www.monblogdata.com/icons/monblogdata2.png”>
+		<meta name="title" property="og:title" content="Say it with Data!">
+		<meta property="og:type" content="Blog">
+		<meta name="description" property="og:description" content="">
+		<script src="../script.js"></script>
+	</head>
+	<body>
+
+		<img src="../icons/monblogdata2.png" alt="Logo" id="logo-icon">
+
+		<header>
+			<img src="../icons/linkedin.png" alt="Lien vers LinkedIn" id="linkedin-icon" onclick="to_linkedin()"/>
+			<div id="menu">
+				<div><a href="../index.html">Home</a></div>
+				<div><a href="about.html">À propos</a></div>
+				<div><a href="contact.html">Contact</a></div>
+			</div>
+			<img src="../icons/loupe.jpg" alt="Barre de recherche" id="mag-glass-icon" onclick="to_search()"/>
+		</header>
+
+		<article>
+			<img src="../pictures/max-ducourneau-unsplash-poisseda.jpg" alt="Photo d'une carpe" />
+			<p class="article-pic-legend">Crédit : Max Ducourneau sur Unsplash</p>
+			<p class="article-home-title">Prédire la taille des poissons par régression : analyse exploratoire des données (1/2)</p>
+			<p class="article-home-desc">
+			Publié en janvier 2022.
+			<br>
+			<br>
+			<h1>Introduction</h1>
+			Traditionnellement, le point de départ d'un projet de science des données est la découverte de ces dernières. Des structures de données très pratiques existent, comme par exemple les DataFrames de la librairie Pandas. On peut ainsi obtenir rapidement des premières statistiques empiriques sur les données de travail, et se faire un premier aperçu des traitements à appliquer (par ex. : détection de données manquantes, features avec des distributions asymétriques ou points extrêmes, "outliers").
+			<br>
+			<br>
+			Aujourd'hui, nous étudierons des données caractérisant des spécimens de poissons sur un marché. Elles ont été publiées sur Kaggle (<i>https://www.kaggle.com/aungpyaeap/fish-market</i>) par Aung Pyae.
+			<br>
+			<br>
+			<h2>Lecture des données, premières statistiques</h2>
+			Nous travaillerons avec les librairies courantes :
+			<br>
+			<img src="../pictures/poissonsEDA/cap1.png" class="code-in-article">
+			<br>
+			Après avoir chargé les données avec Pandas, le premier réflexe est souvent d'afficher les premières lignes avec la méthode <i>head</i> du DataFrame :
+			<br>
+			<img src="../pictures/poissonsEDA/cap2.png" class="code-in-article">
+			<br>
+			Nous sommes donc en présence d'une variable à expliquer, dite "cible/target" (Weight, la masse), et de 5 variables explicatives (l'espèce, trois longueurs, la hauteur et l'épaisseur), dites "features". À l'exception de l'espèce, toutes sont numériques. On peut regarder les grandeurs statistiques des distributions avec la méthode <i>describe</i> : 
+			<br>
+			<img src="../pictures/poissonsEDA/cap3.png" class="code-in-article">
+			<br>
+			Les moyennes et écart-types peuvent être analysées à la lumière d'une grandeur adimensionnée, plus parlante, le coefficient de variation. Il est défini comme : 
+			<br>
+			<img src="../pictures/poissonsEDA/cap4.png" class="code-in-article">
+			<br>
+			Dans l'ordre des colonnes (mis à part la colonne catégorique, espèces), nous obtenons : [0.9, 0.38, 0.38, 0.37, 0.48, 0.38]. La cible possède donc une distribution beaucoup plus éparpillée que les variables explicatives.
+			<br>
+			<br>
+			On remarque également que la masse s'annule (voir <i>min</i>) : une donnée (au moins) manque donc. Il s'agit de la supprimer. Pour le faire le plus facilement possible, NumPy possède des masques. Le principe est simple : à partir d'une condition booléenne (True/False), une colonne est passée au peigne fin et toutes les lignes (individus) pour lesquelles l'attribut de la colonne ne respecte pas la condition sortent du lot. On peut ensuite passer le masque à la fonction <i>numpy.where</i> qui affiche NaN sur les lignes à supprimer. Il ne reste plus qu'à appliquer une méthode de suppression : 
+			<br>
+			<img src="../pictures/poissonsEDA/cap5.png" class="code-in-article">
+			<br>
+			<h2>Représentations graphiques</h2>
+			Passons ensuite à la visualisation. C'est une façon rapide et intuitive de repérer les corrélations et liens entre les variables du jeu de données. La première chose à faire est de charger les features dans des variables séparées :
+			<br>
+			<img src="../pictures/poissonsEDA/cap6.png" class="code-in-article">
+			<br>
+			Intéressons-nous à la relation masse/côtes (les côtes sont des prises de mesure caractérisant des poissons : longueur droite, diagonale et section) :
+			<br>
+			<img src="../pictures/poissonsEDA/cap7.png" class="code-in-article">
+			L'abcisse correspond à une mesure en cm.
+			<br>
+			On semble déceler une corrélation entre ces trois features. En effet, la distribution de masse semble suivre la même tendance pour chacune d'elle avec une translation vers les abcisses croissantes. Qu'en est-il pour les autres variables ?
+			<br>
+			<img src="../pictures/poissonsEDA/cap8.png" class="code-in-article">
+			<br>
+			Un modèle polynomial conviendrait sur chacune des trois "branches". On peut se demander d'où viennent ces tendances si bien distinctes. La piste d'espèces différentes est envisageable : une variable catégorique peut souvent expliquer des comportements "définis par blocs" dans les données. Nous allons voir que c'est effectivement le cas ici. Il faut pour cela regarder les distributions marginales selon les espèces. Utilisons encore la fonction <i>scatter</i> de Matplotlib :
+			<br>
+			<img src="../pictures/poissonsEDA/cap9.png" class="code-in-article">
+			<br>
+			<br>
+			<img src="../pictures/poissonsEDA/cap10.png" class="code-in-article">
+			<br>
+			Ces points sont en grande partie issus de la branche du bas du graphe précédent ! Et une relation linéaire semblerait convenir. Nous avons donc eu raison (au moins pour cette espèce) de séparer les données. Se pourrait-il que le problème d'estimation soit résolu par une simple régression linéaire sur la longueur mesurée pour chacune des espèces ? Représentons les données masse/longueur mesurée en séparant chaque espèce :
+			<br>
+			<img src="../pictures/poissonsEDA/cap11.png" class="code-in-article">
+			<br>
+			Et bien oui ! Ou plutôt, oui pour certaines espèces. Pour d'autres toutefois, il faudra utiliser un modèle plus complexe. Pour les "Pike" (brochets) par exemple, un modèle polynomial d'ordre 2 ou 3 pourrait mieux expliquer les données. Une bonne visualisation aura déjà, à ce stade, permis de résoudre une bonne partie du problème (alors que la distribution non-catégorisée par les espèces apparait complexe).
+			<br>
+			On observe également que les données ne sont pas équitablement réparties : certaines espèces (violet, jaune) sont sous-représentées quand d'autres (noir, vert) sont présentes en plus grande quantité. C'est un problème pour la robustesse des modèles catégoriques : difficile de se reposer sur un modèle avec 3 paramètres ou plus quand l'ensemble des données disponibles ne possède pas un cardinal significativement plus grand.
+			<br>
+			On peut enfin obtenir un graphe analogue pour la distribution masse/largeur :
+			<br>
+			<img src="../pictures/poissonsEDA/cap12.png" class="code-in-article">
+			<br>
+			Les mêmes commentaires s'appliquent. Nous allons en effet voir maintenant que les features sont fortement corrélées et n'apportent pas d'informations supplémentaires entre elles. Pour cela, on utilise la matrice de corrélation des features, disponibles sous NumPy avec la méthode <i>corr</i> :
+			<br>
+			<img src="../pictures/poissonsEDA/cap13.png" class="code-in-article">
+			<br>
+			On remarque directement que toutes les variables explicatives sont fortement corrélées. "Length1" semble être la feature la plus corrélée avec la cible, on pourra ainsi l'utiliser préférentiellement pour le modèle de régression.
+			<br>
+			Pour conclure cet article, une autre méthode (moins explicite mais plus visuelle) de se représenter les liens entre variables homogènes comme ici (mais pas forcément les corrélations !) est de représenter la distribution des écarts absolus par paire de variables, comme proposé ici pour Length1 et 2 : 
+			<br>
+			<img src="../pictures/poissonsEDA/cap14.png" class="code-in-article">
+			<br>
+			Notons enfin qu'il existe la fonction <i>pairplot</i> de Seaborn pour représenter les graphes de variations par paire (l'argument "kde" permet d'obtenir une densité plutôt qu'un histogramme sur la diagonale:
+			<br>
+			<img src="../pictures/poissonsEDA/cap15.png" class="code-in-article">
+			<br>
+			<br>
+			<img src="../pictures/poissonsEDA/cap16.png" class="code-in-article">
+			<br>
+			On note de belles corrélations linéaires ! Le dataset est artificiel, dans la pratique de tels résultats relèveraient du miracle.
+			<br>
+			Le prochain article traitera des modèles de régression (linéaire, polynomiale, multiple) appliqués sur ces données !
+			</p>
+		</article>
+		<footer>
+			<p>Site développé par Clément BOULAY | 2021-2022</p>
+		</footer>
+	</body>
+
+</html>

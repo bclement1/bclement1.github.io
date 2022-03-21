@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Contact - Say it with Data!</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/header.css">
+		<meta name="image" property="og:image" content=”https://www.monblogdata.com/icons/monblogdata2.png”>
+		<meta name="title" property="og:title" content="Say it with Data!">
+		<meta property="og:type" content="Blog">
+		<meta name="description" property="og:description" content="">
+		<style type="text/css">
+			#zone-contact {
+				width: 40%;
+				margin: auto;
+				border-left: 1px solid #e0e0d1;
+				border-right: 1px solid #e0e0d1;
+				padding-left: 30px;
+				padding-right: 30px;
+			}
+
+			.mail {
+				display: flex;
+				justify-content: space-between;
+				padding-bottom: 20px;
+			}
+
+			.mail p, #zone-contact p {
+				font-family: "rr";
+			}
+		</style>
+		<script src="../script.js"></script>
+	</head>
+	<body>
+		<img src="../icons/monblogdata2.png" alt="Logo" id="logo-icon">
+		<header>
+			<img src="../icons/linkedin.png" alt="Lien vers LinkedIn" id="linkedin-icon" onclick="to_linkedin()"/>
+			<div id="menu">
+				<div><a href="../index.html">Home</a></div>
+				<div><a href="about.html">À propos</a></div>
+				<div><a href="contact.html">Contact</a></div>
+			</div>
+			<img src="../icons/loupe.jpg" alt="Barre de recherche" id="mag-glass-icon" onclick="to_search()"/>
+		</header>
+		<div id="zone-contact">
+			<p> Vous pouvez me contacter avec les deux mails suivants : </p>
+			<div class="mail">
+				<img src="../icons/centralesupelec-icon-color.png" alt="Logo de CentraleSupélec" style="height: 25%; width: 25%;" />
+				<p>clement.boulay@student-cs.fr</p>
+			</div>
+			<div class="mail">
+				<img src="../icons/gmail-icon.png" alt="Logo de Gmail" style="height: 10%; width: 10%; padding-left: 40px;"/>
+				<p>clementboulay0@gmail.com</p>	
+			</div>
+		</div>
+		<footer>
+			<p>Site développé par Clément BOULAY | 2021-2022</p>
+		</footer>
+	</body>
+</html>
