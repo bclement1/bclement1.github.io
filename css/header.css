@@ -1,0 +1,79 @@
+
+/*
+	Ce fichier met en forme le header de toutes les pages du blog (barre de navigation).
+*/
+
+@font-face {
+	font-family: "osl";
+	src: url("../fonts/opensanslight.ttf") format("truetype");
+}
+
+
+@font-face {
+	font-family: "osr";
+	src: url("../fonts/opensansregular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "rr";
+	src: url("../fonts/rr.ttf") format("truetype");
+}
+
+#logo-icon {
+	display: block;
+	padding-top: 10px;
+	width: 25%;
+	margin: auto;
+}
+
+* {
+	font-family: "osl";
+
+}
+
+header {
+	width: 60%;
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px #e0e0d1 solid;
+	margin-bottom: 30px;
+}
+
+header a {
+	text-decoration: none;
+	color: black;
+}
+
+#linkedin-icon {
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+
+#menu {
+	display: flex;
+	width: 60%;
+	justify-content: space-between;
+	font-size: 1.3em;
+}
+
+#mag-glass-icon {
+	width: 45px;
+	height: 45px;
+	cursor: pointer;
+}
+
+footer {
+	width: 80%;
+	margin: auto;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	border-top: 1px #e0e0d1 solid;
+	margin-top: 20px;
+	text-align: center;
+	color: grey;
+}

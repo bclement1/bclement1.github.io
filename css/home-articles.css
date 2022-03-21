@@ -1,0 +1,40 @@
+/*
+	Ce fichier met en forme le fil et la présentation de chaque article sur la page principale.
+*/
+
+article {
+	width: 60%;
+	margin: auto;
+	margin-bottom: 50px;
+	border-left: 1px solid #e0e0d1;
+	border-right: 1px solid #e0e0d1;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+article img {
+	display: block;
+	width: 60%;
+	margin: auto;
+	border: 3px solid white;
+}
+
+article img:hover {
+	border: 3px solid #cccccc;
+	opacity: 80%;
+}
+
+.article-home-title {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+.article-pic-legend {
+	text-align: center;
+}
+
+.article-home-desc {
+	padding-bottom: 30px;
+	border-bottom: 1px solid #e0e0d1;
+}

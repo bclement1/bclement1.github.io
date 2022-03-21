@@ -1,0 +1,38 @@
+
+/*
+	Ce fichier est appelé par les fichiers html des articles seulement.
+	Il met en forme les articles réguliers du blog (articles entiers et seuls, et non pas ceux du défilement de la page de présentation).
+*/
+
+article {
+	width: 60%;
+	margin: auto;
+	border-left: 1px solid #e0e0d1;
+	border-right: 1px solid #e0e0d1;
+	padding-left: 30px;
+	padding-right: 30px;
+	font-family: "osr";
+	font-size: 0.85em;
+	text-align: justify;
+}
+
+article img {
+	display: block;
+	width: 60%;
+	margin: auto;
+	border: 3px solid white;
+}
+
+.code-in-article {
+	width: 100%;
+}
+
+.article-home-title {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+.article-pic-legend {
+	text-align: center;
+}
