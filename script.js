@@ -8,7 +8,14 @@ function to_linkedin() {
 
 	// Cette fonction renvoie sur ma page LinkedIn. Elle est liée à l'événement onclick de l'icône LI.
 
-	window.open("https://www.linkedin.com/in/clementboulay/")
+	window.open("https://www.linkedin.com/in/clementboulay/");
+}
+
+function to_github() {
+
+  // Cette fonction renvoie sur ma page LinkedIn. Elle est liée à l'événement onclick de l'icône LI.
+
+  window.open("https://www.github.com/bclement1/");
 }
 
 function to_search() {

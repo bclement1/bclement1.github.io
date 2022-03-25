@@ -40,7 +40,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px #e0e0d1 solid;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 header a {
@@ -48,10 +48,16 @@ header a {
 	color: black;
 }
 
-#linkedin-icon {
+#linkedin-icon, #github-icon {
 	width: 32px;
 	height: 32px;
 	cursor: pointer;
+}
+
+#social-links-div {
+	width: 10%;
+	display: flex;
+	justify-content: space-between;
 }
 
 #menu {
