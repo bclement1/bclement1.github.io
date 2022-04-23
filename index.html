@@ -13,9 +13,13 @@
 		<script src="script.js"></script>
 	</head>
 
-	<body onload = "store_articles_data()">
+	<body onload="store_articles_data();">
 		<img src="icons/monblogdata2.png" alt="Logo" id="logo-icon">
 		<header>
+			<div id="night-mode-container">
+				<input name="checkbox" type="checkbox" id="night-mode-checkbox" onchange="nightMode()"/>
+				<label for="night-mode-checkbox"></label>
+			</div>
 			<div id="social-links-div">
 				<img src="icons/linkedin.png" alt="Lien vers LinkedIn" id="linkedin-icon" onclick="to_linkedin()"/>
 				<img src="icons/github.png" alt="Lien vers GitHub" id="github-icon" onclick="to_github()"/>
@@ -25,7 +29,7 @@
 				<div><a href="static/about.html">À propos</a></div>
 				<div><a href="static/contact.html">Contact</a></div>
 			</div>
-			<img src="icons/loupe.jpg" alt="Barre de recherche" id="mag-glass-icon" onclick="to_search()"/>
+			<img src="icons/loupe.png" alt="Barre de recherche" id="mag-glass-icon" onclick="to_search()"/>
 		</header>
 
 		<article>
@@ -83,5 +87,6 @@
 		<footer>
 			<p>Site développé par Clément BOULAY | 2021-2022</p>
 		</footer>
+		<script src="light.js"></script>
 	</body>
 </html>

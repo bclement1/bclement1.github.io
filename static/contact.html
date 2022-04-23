@@ -30,13 +30,20 @@
 	<body>
 		<img src="../icons/monblogdata2.png" alt="Logo" id="logo-icon">
 		<header>
-			<img src="../icons/linkedin.png" alt="Lien vers LinkedIn" id="linkedin-icon" onclick="to_linkedin()"/>
+			<div id="night-mode-container">
+				<input name="checkbox" type="checkbox" id="night-mode-checkbox" onchange="nightMode()"/>
+				<label for="night-mode-checkbox"></label>
+			</div>
+			<div id="social-links-div">
+				<img src="../icons/linkedin.png" alt="Lien vers LinkedIn" id="linkedin-icon" onclick="to_linkedin()"/>
+				<img src="../icons/github.png" alt="Lien vers GitHub" id="github-icon" onclick="to_github()"/>
+			</div>
 			<div id="menu">
 				<div><a href="../index.html">Home</a></div>
 				<div><a href="about.html">À propos</a></div>
 				<div><a href="contact.html">Contact</a></div>
 			</div>
-			<img src="../icons/loupe.jpg" alt="Barre de recherche" id="mag-glass-icon" onclick="to_search()"/>
+			<img src="../icons/loupe.png" alt="Barre de recherche" id="mag-glass-icon" onclick="to_search()"/>
 		</header>
 		<div id="zone-contact">
 			<p> Vous pouvez me contacter avec les deux mails suivants : </p>
@@ -53,5 +60,6 @@
 		<footer>
 			<p>Site développé par Clément BOULAY | 2021-2022</p>
 		</footer>
+		<script src="../light.js"></script>
 	</body>
 </html>

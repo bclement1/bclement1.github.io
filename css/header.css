@@ -28,7 +28,6 @@
 
 * {
 	font-family: "osl";
-
 }
 
 header {
@@ -68,8 +67,7 @@ header a {
 }
 
 #mag-glass-icon {
-	width: 45px;
-	height: 45px;
+	width: 7%;
 	cursor: pointer;
 }
 
@@ -82,4 +80,37 @@ footer {
 	margin-top: 20px;
 	text-align: center;
 	color: grey;
+}
+
+#night-mode-container {
+	position: absolute;
+	z-index: 0;
+	top: 100px;
+	right: 200px;
+	border-radius: 30px;
+	background: #ddd;
+	width: 55px;
+	height: 25px;
+}
+
+#night-mode-container label {
+	position: absolute;
+	z-index: 30;
+	top: 0px;
+	left: 0px;
+	width: 25px;
+	height: 25px;
+	background: #aaa;
+	border-radius: 50%;
+}
+
+#night-mode-checkbox {
+	display: block;
+	width: 70px;
+	height: 25px;
+	visibility: hidden;
+}
+
+#night-mode-checkbox:checked + label {
+	left: 30px;
 }

@@ -81,6 +81,7 @@ function display_response(indexes) {
     document.getElementById("article" + index.toString()).appendChild(result_title);
     document.getElementById("article" + index.toString()).appendChild(result_desc);
   }
+  resetMode();
 }
 
                
