@@ -12,21 +12,28 @@
 		<script src="../script.js"></script>
 	</head>
 
-	<body>
-		<img src="../icons/monblogdata2.png" alt="Logo" id="logo-icon">
+	<body onload="launch_display_menu()">
+		<img src="../icons/monblogdata_nuit.png" alt="Logo" id="logo-icon">
+
 		<header>
-			<div id="night-mode-container">
-				<input name="checkbox" type="checkbox" id="night-mode-checkbox" onchange="nightMode()"/>
-				<label for="night-mode-checkbox"></label>
+				<!--
+				<div id="night-mode-container">
+					<input name="checkbox" type="checkbox" id="night-mode-checkbox" onchange="nightMode()"/>
+					<label for="night-mode-checkbox"></label>
+				</div>
+				-->
+			<div id="three_bars" onclick="change_menu_state()" >
+				<div id="bar1"></div>
+				<div id="bar2"></div>
+				<div id="bar3"></div>
 			</div>
-			<div id="social-links-div">
+			
+			<div id="menu">
 				<img src="../icons/linkedin.png" alt="Lien vers LinkedIn" id="linkedin-icon" onclick="to_linkedin()"/>
 				<img src="../icons/github.png" alt="Lien vers GitHub" id="github-icon" onclick="to_github()"/>
-			</div>
-			<div id="menu">
 				<div><a href="../index.html">Home</a></div>
 				<div><a href="about.html">À propos</a></div>
-				<div><a href="contact.html">Contact</a></div>
+				<!-- <div><a href="contact.html">Contact</a></div> -->
 			</div>
 			<img src="../icons/loupe.png" alt="Barre de recherche" id="mag-glass-icon" onclick="to_search()"/>
 		</header>
@@ -130,7 +137,7 @@
 		<footer>
 			<p>Site développé par Clément BOULAY | 2021-2022</p>
 		</footer>
-		<script src="../light.js"></script>
+		<!-- <script src="../light.js"></script> -->
 	</body>
 
 </html>

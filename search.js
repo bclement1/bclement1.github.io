@@ -81,7 +81,6 @@ function display_response(indexes) {
     document.getElementById("article" + index.toString()).appendChild(result_title);
     document.getElementById("article" + index.toString()).appendChild(result_desc);
   }
-  resetMode();
 }
 
                
@@ -89,9 +88,11 @@ function search() {
 
   document.getElementById("search_results_area").innerHTML = ""; /* on vide le champ d'affichage */
   if (event.keyCode == 13) { /* enter key press */
+
     let input = get_input();
     let articles_lowercase_titles = get_titles().toString().split(","); /* utilisé pour la recherche" */
     let indexes_to_display = []; /* indices dans les listes enregistrées localement des articles à retourner */
+
     for (i = 0; i < input.length; i++) {
       const word = input[i];
       for (j = 0; j < articles_lowercase_titles.length; j++) {

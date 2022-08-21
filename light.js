@@ -16,7 +16,7 @@ if(state == undefined) { // if state does not exist yet, local storage value wil
   state = 0;
 }
 
-resetMode(); // set light theme from local storage's value
+// resetMode(); // set light theme from local storage's value
 
 function resetMode() {
   if(state == 1) { // reset night mode
@@ -78,7 +78,7 @@ function nightMode() {
 
   if(state == 0) { // switch from day mode to night mode
 
-    document.body.style = "background-color: black;";
+    document.body.style = "background-color: #303841;";
 
     if(page == "index.html") {
       logo.src = "icons/monblogdata2-night.png";
