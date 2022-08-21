@@ -3,6 +3,7 @@
 */
 
 article {
+	padding-top:  30px;
 	width: 60%;
 	margin: auto;
 	margin-bottom: 50px;
@@ -16,17 +17,16 @@ article img {
 	display: block;
 	width: 60%;
 	margin: auto;
-	border: 3px solid white;
+	border: 1px solid white;
 }
 
 article img:hover {
-	border: 3px solid #cccccc;
+	border: 1px solid #cccccc;
 	opacity: 80%;
 }
 
 .article-home-title {
 	text-align: center;
-	font-weight: bold;
 	font-size: 1.3em;
 }
 
@@ -36,5 +36,4 @@ article img:hover {
 
 .article-home-desc {
 	padding-bottom: 30px;
-	border-bottom: 1px solid #e0e0d1;
 }

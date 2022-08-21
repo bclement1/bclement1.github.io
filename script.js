@@ -4,6 +4,8 @@
 	Ce fichier contient les redirections du header et permet le fonctionnement de la page de recherche en lui stockant des informations localement.
 */
 
+let menuIsOpen = 1;
+
 function to_linkedin() {
 
 	// Cette fonction renvoie sur ma page LinkedIn. Elle est liée à l'événement onclick de l'icône LI.
@@ -53,4 +55,87 @@ function store_articles_data() {
   localStorage.setItem("article_desc", article_desc);
   localStorage.setItem("article_link", article_link);
   localStorage.setItem("article_im", article_im);
+}
+
+function display_menu_first_part() {
+
+  let linkedinIcon = document.getElementById("linkedin-icon");
+  linkedinIcon.style.transition = "opacity 1s";
+  linkedinIcon.style.opacity = "1"; 
+}
+
+function display_menu_second_part() {
+
+  let githubIcon = document.getElementById("github-icon");
+  githubIcon.style.transition = "opacity 1s";
+  githubIcon.style.opacity = "1";
+}
+
+
+function display_menu_third_part() {
+
+  let menu = document.getElementById("menu");
+  let magGlassIcon = document.getElementById("mag-glass-icon");
+
+  menu.style.transition = "opacity 1s";
+  magGlassIcon.style.transition = "opacity 1s";
+
+  menu.style.opacity = "1";
+  magGlassIcon.style.opacity = "1"; 
+}
+
+function display_menu() {
+
+  let bar1 = document.getElementById("bar1");
+  let bar2 = document.getElementById("bar2");
+  let bar3 = document.getElementById("bar3");
+
+  bar1.style.transform = "translateY(15.5px) rotate(45deg)";
+  bar3.style.transform = "translateY(-16px) rotate(-45deg)";
+  bar2.style.opacity = "0";
+
+  setTimeout(display_menu_first_part, 500);
+  setTimeout(display_menu_second_part, 1000);
+  setTimeout(display_menu_third_part, 1500);
+}
+
+function launch_display_menu() {
+  setTimeout(display_menu, 1000);
+}
+
+function close_menu() {
+
+  let linkedinIcon = document.getElementById("linkedin-icon");
+  let githubIcon = document.getElementById("github-icon");
+  let menu = document.getElementById("menu");
+  let magGlassIcon = document.getElementById("mag-glass-icon");
+
+  linkedinIcon.style.transition = "opacity 1s";
+  githubIcon.style.transition = "opacity 1s";
+  menu.style.transition = "opacity 1s";
+  magGlassIcon.style.transition = "opacity 1s";
+
+  linkedinIcon.style.opacity = "0"; 
+  githubIcon.style.opacity = "0";
+  menu.style.opacity = "0";
+  magGlassIcon.style.opacity = "0"; 
+
+  let bar1 = document.getElementById("bar1");
+  let bar2 = document.getElementById("bar2");
+  let bar3 = document.getElementById("bar3");
+
+  bar1.style.transform = "translateY(0px) rotate(0deg)";
+  bar3.style.transform = "translateY(0px) rotate(0deg)";
+  bar2.style.opacity = "1";
+}
+
+function change_menu_state() {
+  if(menuIsOpen) {
+    close_menu();
+    menuIsOpen = 0;
+  }
+  else {
+    display_menu();
+    menuIsOpen = 1;
+  }
 }
