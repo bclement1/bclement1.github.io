@@ -77,8 +77,13 @@ header a {
 	display: flex;
 	width: 50%;
 	justify-content: space-between;
-	font-size: 1.3em;
+	font-size: 1.2em;
 	opacity: 0;
+}
+
+#menu div {
+	display: flex;
+	align-items: center;
 }
 
 #mag-glass-icon {
