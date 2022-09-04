@@ -36,12 +36,12 @@ header {
 	width: 60%;
 	margin: auto;
 	display: flex;
-	padding-top: 10px;
-	padding-bottom: 60px;
+	margin-top: 10px;
+	margin-bottom: 80px;
 	justify-content: space-between;
 	align-items: center;
+	padding-bottom: 30px;
 	border-bottom: 1px #e0e0d1 solid;
-	margin-bottom: 50px;
 }
 
 header a {
@@ -93,13 +93,14 @@ header a {
 }
 
 footer {
-	width: 80%;
+	width: 30%;
 	margin: auto;
-	padding-top: 5px;
 	padding-bottom: 10px;
 	border-top: 1px #e0e0d1 solid;
 	margin-top: 20px;
+	padding-top: 10px;
 	text-align: center;
+	font-size: 0.9em;
 	color: grey;
 }
 

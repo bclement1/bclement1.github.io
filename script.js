@@ -45,8 +45,11 @@ function store_articles_data() {
 
   for (var i = 0; i < articles.length; i++) {
     let article = articles[i];
-    article_titles.push(article.getElementsByTagName("p")[0].innerHTML);
-    article_desc.push(article.getElementsByTagName("p")[1].innerHTML);
+    article_titles.push(article.getElementsByClassName("article-home-title")[0].innerHTML);
+    article_desc.push(article.getElementsByClassName("article-home-desc")[0].innerHTML);
+    if(i == (articles.length - 1)) {
+      article_desc.push(""); // for easier parsing in search.js
+    }
     article_link.push(article.getElementsByTagName("a")[0].href);
     article_im.push(article.getElementsByTagName("img")[0].src);
   }
