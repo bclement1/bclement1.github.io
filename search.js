@@ -43,7 +43,8 @@ function display_response(indexes) {
 
   let indexes_to_display = indexes;
   let articles_titles = get_titles().toString().split(",");
-  let articles_descs = get_descs().toString().split(",");
+  let articles_descs = get_descs().toString().split(".,");
+  console.log(articles_descs);
   let articles_links = get_links().toString().split(",");
   let articles_ims = get_ims().toString().split(",");
 
@@ -57,8 +58,18 @@ function display_response(indexes) {
 
     let index = indexes_to_display[i];
 
-    let article = document.createElement("article");
-    article.id = "article" + index.toString();
+    let result_article = document.createElement("article");
+    result_article.className = "home-article" // "article" + index.toString();
+
+    let result_link = document.createElement("a");
+    result_link.href = articles_links[index].split("/").pop();
+    result_link.className = "home-article-link" //"anchor" + index.toString();
+
+    let result_im = document.createElement("img");
+    result_im.src = "../pictures/" + articles_ims[index].split("/").pop();
+
+    let result_div = document.createElement("div");
+    result_div.className = "article-text-container" // "article" + index.toString();
 
     let result_title = document.createElement("p");
     result_title.innerHTML = articles_titles[index];
@@ -67,19 +78,13 @@ function display_response(indexes) {
     let result_desc = document.createElement("p");
     result_desc.innerHTML = articles_descs[index];
 	  result_desc.className = "article-home-desc";
-
-    let result_im = document.createElement("img");
-    result_im.src = "../pictures/" + articles_ims[index].split("/").pop();
-
-    let result_link = document.createElement("a");
-    result_link.href = articles_links[index].split("/").pop();
-    result_link.id = "anchor" + index.toString();
    
-    document.getElementById("search_results_area").appendChild(article);
-    document.getElementById("article" + index.toString()).appendChild(result_link);
-    document.getElementById("anchor" + index.toString()).appendChild(result_im);
-    document.getElementById("article" + index.toString()).appendChild(result_title);
-    document.getElementById("article" + index.toString()).appendChild(result_desc);
+    document.getElementById("search_results_area").appendChild(result_article); // ajout de l'article à la zone d'affichage
+    result_article.appendChild(result_link); // ajout du lien à l'article
+    result_link.appendChild(result_im); // ajout de l'image au lien
+    result_article.appendChild(result_div); // ajout du div à l'article
+    result_div.appendChild(result_title); // ajout du titre au div
+    result_div.appendChild(result_desc); // ajout de la description au div
   }
 }
 
