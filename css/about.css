@@ -1,0 +1,130 @@
+/* about.css */
+
+/*
+* {
+	border:  1px solid white;
+}
+
+*/
+
+#about {
+	width: 60%;
+	margin: auto;
+	padding-left: 30px;
+	padding-right: 30px;
+	text-align: justify;
+}
+
+#picture_me_circle {
+	width: 160px;
+	height: 160px;
+	margin-left:  290px;
+	opacity: 0;
+	transition:  opacity 1s;
+}
+
+#timeline {
+	height:  450px;
+	width:  1px;
+	background-color: white;
+	position: absolute;
+	top:  430px;
+	left:  700px;
+	opacity:  0;
+	transition:  opacity 1s;
+}
+
+#ticks_container {
+	height:  420px;
+}
+
+#bullet0, #bullet1, #bullet2, #bullet3, #bullet4 {
+	width:  11px;
+	height: 11px;
+	border-radius: 10px;
+	background-color: white;
+	position:  absolute;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+#text0, #text1, #text2, #text3, #text4, #date0, #date1, #date2, #date3, #date4 {
+	position:  absolute;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+#bullet0 {
+	top: 460px;
+	left: 695px;
+}
+
+#bullet1 {
+	top: 560px;
+	left: 695px;
+}
+
+#bullet2 {
+	top: 660px;
+	left: 695px;
+}
+
+#bullet3 {
+	top: 760px;
+	left: 695px;
+}
+
+#bullet4 {
+	top: 810px;
+	left: 695px;
+}
+
+#text0 {
+	top: 440px;
+	left: 760px;
+}
+
+#text1 {
+	top: 540px;
+	left: 760px;
+}
+
+#text2 {
+	top: 640px;
+	left: 760px;
+}
+
+#text3 {
+	top: 740px;
+	left: 760px;
+}
+
+#text4 {
+	top: 790px;
+	left: 760px;
+}
+
+#date0 {
+	top: 440px;
+	left: 560px;
+}
+
+#date1 {
+	top: 540px;
+	left: 560px;
+}
+
+#date2 {
+	top: 640px;
+	left: 560px;
+}
+
+#date3 {
+	top: 740px;
+	left: 560px;
+}
+
+#date4 {
+	top: 790px;
+	left: 560px;
+}

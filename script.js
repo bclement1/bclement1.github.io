@@ -90,7 +90,7 @@ function display_menu() {
   let bar2 = document.getElementById("bar2");
   let bar3 = document.getElementById("bar3");
 
-  bar1.style.transform = "translateY(15.5px) rotate(45deg)";
+  bar1.style.transform = "translateY(15px) rotate(45deg)";
   bar3.style.transform = "translateY(-16px) rotate(-45deg)";
   bar2.style.opacity = "0";
 
@@ -138,4 +138,74 @@ function change_menu_state() {
     display_menu();
     menuIsOpen = 1;
   }
+}
+
+function launch_display_timeline() {
+  setTimeout(display_picture, 3000);
+  setTimeout(display_timeline, 3500);
+  setTimeout(display_block0, 4000);
+  setTimeout(display_block1, 4200);
+  setTimeout(display_block2, 4400);
+  setTimeout(display_block3, 4600);
+  setTimeout(display_block4, 4800);
+} 
+
+function display_picture() {
+  picture = document.getElementById("picture_me_circle");
+  picture.style.opacity = "1";
+}
+
+function display_timeline() {
+  timeline = document.getElementById("timeline");
+  timeline.style.opacity = "1";
+}
+
+function display_block0() {
+  let date0 = document.getElementById("date0");
+  let bullet0 = document.getElementById("bullet0");
+  let text0 = document.getElementById("text0");
+
+  date0.style.opacity = "1";
+  bullet0.style.opacity = "1";
+  text0.style.opacity = "1";
+}
+
+function display_block1() {
+  let date1 = document.getElementById("date1");
+  let bullet1 = document.getElementById("bullet1");
+  let text1 = document.getElementById("text1");
+
+  date1.style.opacity = "1";
+  bullet1.style.opacity = "1";
+  text1.style.opacity = "1";
+}
+
+function display_block2() {
+  let date2 = document.getElementById("date2");
+  let bullet2 = document.getElementById("bullet2");
+  let text2 = document.getElementById("text2");
+
+  date2.style.opacity = "1";
+  bullet2.style.opacity = "1";
+  text2.style.opacity = "1";
+}
+
+function display_block3() {
+  let date3 = document.getElementById("date3");
+  let bullet3 = document.getElementById("bullet3");
+  let text3 = document.getElementById("text3");
+
+  date3.style.opacity = "1";
+  bullet3.style.opacity = "1";
+  text3.style.opacity = "1";
+}
+
+function display_block4() {
+  let date4 = document.getElementById("date4");
+  let bullet4 = document.getElementById("bullet4");
+  let text4 = document.getElementById("text4");
+
+  date4.style.opacity = "1";
+  bullet4.style.opacity = "1";
+  text4.style.opacity = "1";
 }
