@@ -8,6 +8,7 @@
 	display: block;
 	width: 40%;
 	height: 35px;
+	border-radius: 3px;
 	margin: auto;
 	border: 1px solid #e0e0d1;
 }

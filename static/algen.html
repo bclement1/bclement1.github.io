@@ -11,42 +11,34 @@
 		<meta name="description" property="og:description" content="">
 		<script src="../script.js"></script>
 	</head>
-
 	<body onload="launch_display_menu()">
 		<img src="../icons/monblogdata_nuit.png" alt="Logo" id="logo-icon">
-
 		<header>
-				<!--
-				<div id="night-mode-container">
-					<input name="checkbox" type="checkbox" id="night-mode-checkbox" onchange="nightMode()"/>
-					<label for="night-mode-checkbox"></label>
-				</div>
-				-->
 			<div id="three_bars" onclick="change_menu_state()" >
 				<div id="bar1"></div>
 				<div id="bar2"></div>
 				<div id="bar3"></div>
 			</div>
-			
 			<div id="menu">
 				<img src="../icons/linkedin.png" alt="Lien vers LinkedIn" id="linkedin-icon" onclick="to_linkedin()"/>
 				<img src="../icons/github.png" alt="Lien vers GitHub" id="github-icon" onclick="to_github()"/>
-				<div><a href="../index.html">Home</a></div>
-				<div><a href="about.html">À propos</a></div>
+				<div>
+					<a href="../index.html">Home</a>
+				</div>
+				<div>
+					<a href="about.html">À propos</a>
+				</div>
 				<!-- <div><a href="contact.html">Contact</a></div> -->
 			</div>
 			<img src="../icons/loupe.png" alt="Barre de recherche" id="mag-glass-icon" onclick="to_search()"/>
 		</header>
-
 		<article>
-			<img src="../pictures/darengd-unsplash-corn.jpg" alt="Photo d'un champ de maïs" />
-			<p class="article-pic-legend">Crédit : @darengd sur Unsplash</p>
+			<img src="../pictures/darengd-unsplash-corn-modified.png" alt="Photo d'un champ de maïs" />
+			<p class="article-pic-legend">Crédit : darengd sur Unsplash</p>
 			<p class="article-home-title">Algorithme génétique : évolution d'un champ de maïs</p>
+			<br>
+			<p class="article-keypoint">Introduction</p>
 			<p class="article-home-desc">
-			Publié en novembre 2021.
-			<br>
-			<br>
-			<h1>Introduction</h1>
 			On suppose que l'on étudie un champ de maïs. On considère chaque épi de maïs séparement, en les considérant comme des invidus indépendants. L'ensemble des épis constitue une population. La performance d'un individu (un épi de maïs) peut être mesurée comme une fraction du rendement maximal (fixé).
 			<br>
 			<br>
@@ -58,50 +50,54 @@
 			Pour pimenter les choses, on supposera également que les épis de maïs peuvent "muter" : le rendement d'un épi peut varier d'une année à l'autre avec une probabilité p, p << 1.
 			<br>
 			<br>
-			<h1>Le code (main.py)</h1>
+			</p>
+			<p class="article-keypoint">Le code</p>
+			<p class="article-home-desc">
 			Voyons maintenant le code associé.
 			<br>
 			<br>
 			4 fonctions principales permettent de réaliser des simulations. D'abord, une fonction <i>individual</i> crée un individu en lui associant un rendement :
-			<img src="../pictures/algen/individual.png" class="code-in-article">
+			<img src="../pictures/algen/individual.png" class="image-in-article">
 			<br>
 			Ensuite, une autre fonction <i>population</i> crée le champ de maïs :
-			<img src="../pictures/algen/population.png" class="code-in-article">
+			<img src="../pictures/algen/population.png" class="image-in-article">
 			<br>
 			Il faut également définir une fonction <i>grade</i> permettant d'associer un score au champ une année donnée :
-			<img src="../pictures/algen/grade.png" class="code-in-article">
+			<img src="../pictures/algen/grade.png" class="image-in-article">
 			<br>
 			Et enfin, la fonction principale, <i>evolve</i>, permet de construire les générations dans le champ de maïs (elle sera appelée chaque année) :
-			<img src="../pictures/algen/evolve-1.png" class="code-in-article">
+			<img src="../pictures/algen/evolve-1.png" class="image-in-article">
 			<br>
 			La fonction est séparée en plusieurs parties. Premièrement, on se charge de sélectionner les individus et de les faire muter au hasard : 
-			<img src="../pictures/algen/evolve-2.png" class="code-in-article">
+			<img src="../pictures/algen/evolve-2.png" class="image-in-article">
 			<br>
 			Puis on les croise pour créer des enfants qui vont peupler le champ l'année A+1 : 
-			<img src="../pictures/algen/evolve-3.png" class="code-in-article">
+			<img src="../pictures/algen/evolve-3.png" class="image-in-article">
 			<br>
 			Et on construit la nouvelle génération :
-			<img src="../pictures/algen/evolve-4.png" class="code-in-article">
+			<img src="../pictures/algen/evolve-4.png" class="image-in-article">
 			<br>
-			<h1>La simulation</h1>
+			</p>
+			<p class="article-keypoint">La simulation</p>
+			<p class="article-home-desc">
 			On choisit de prendre les rendements des épis entre 1 et 10 (unité arbitraire). On se donne un champ de 100 par 100 (donc 10 000 épis) et de l'étudier sur 100 générations.
 			<br>
 			Un second fichier test.py permet de visualiser l'évolution du champ sous forme de heatmap du rendement. Voici quelques extraits d'une simulation (plus le vert est foncé, meilleur est le rendement) :
 			<br>
 			Répartition initiale :
-			<img src="../pictures/algen/sim-1.png" class="code-in-article">
+			<img src="../pictures/algen/sim-1.png" class="image-in-article">
 			<br>
 			Après 1 sélection :
-			<img src="../pictures/algen/sim-2.png" class="code-in-article">
+			<img src="../pictures/algen/sim-2.png" class="image-in-article">
 			<br>
 			Après 2 sélections :
-			<img src="../pictures/algen/sim-3.png" class="code-in-article">
+			<img src="../pictures/algen/sim-3.png" class="image-in-article">
 			<br>
 			Après 10 sélections :
-			<img src="../pictures/algen/sim-10.png" class="code-in-article">
+			<img src="../pictures/algen/sim-10.png" class="image-in-article">
 			<br>
 			Après 20 sélections :
-			<img src="../pictures/algen/sim-20.png" class="code-in-article">
+			<img src="../pictures/algen/sim-20.png" class="image-in-article">
 			<br>
 			Que remarquer ? D'abord, la répartition initiale semble effectivement aléatoire, on y voit des rendements faibles (clairs) et forts (vert foncé). Le champ est donc initialement "naturel", c'est-à-dire qu'aucune sélection de performance n'a eu lieu. Après la 1ère sélection, le champ apparaît beaucoup plus foncé. Son rendement est donc, en moyenne, meilleur. D'une façon générale, le rendement moyen est croissant avec le temps (donc la sélection fonctionne !).
 			<br>
@@ -122,7 +118,7 @@
 			<br>
 			<br>
 			Pour conclure et illustrer ces remarques, on trace l'évolution de l'écart du rendement moyen du champ au rendement idéal (cas où tous les épis ont un rendement de 10) au fil du temps :
-			<img src="../pictures/algen/yieldovertime.png" class="code-in-article">
+			<img src="../pictures/algen/yieldovertime.png" class="image-in-article">
 			<br>
 			On observe une convergence vers la valeur en régime permanent à partir d'environ 10 générations (ce qui est cohérent avec nos remarques).
 			<br>
@@ -135,9 +131,8 @@
 		</article>
 
 		<footer>
-			<p>Site développé par Clément BOULAY | 2021-2022</p>
+			<p>Site développé par Clément Boulay | 2021-2022</p>
 		</footer>
-		<!-- <script src="../light.js"></script> -->
 	</body>
 
 </html>
