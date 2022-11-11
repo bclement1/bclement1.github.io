@@ -18,7 +18,22 @@
 #picture_me_circle {
 	width: 160px;
 	height: 160px;
-	margin-left:  290px;
+	margin-left:  295px;
+	opacity: 0;
+	transition:  opacity 1s;
+}
+
+#contact-container {
+	width: 230px;
+	height: 100px;
+	border-radius: 10px;
+	position: absolute;
+	top: 550px;
+	left: 275px;
+	background-color: #4c5863;
+	color:  white;
+	text-align: center;
+	font-size: 14px;
 	opacity: 0;
 	transition:  opacity 1s;
 }
@@ -29,7 +44,7 @@
 	background-color: white;
 	position: absolute;
 	top:  430px;
-	left:  700px;
+	left:  715px;
 	opacity:  0;
 	transition:  opacity 1s;
 }
@@ -57,32 +72,34 @@
 
 #bullet0 {
 	top: 460px;
-	left: 695px;
+	left: 710px;
 }
 
 #bullet1 {
 	top: 560px;
-	left: 695px;
+	left: 710px;
 }
 
 #bullet2 {
 	top: 660px;
-	left: 695px;
+	left: 710px;
 }
 
 #bullet3 {
 	top: 760px;
-	left: 695px;
+	left: 710px;
 }
 
 #bullet4 {
 	top: 810px;
-	left: 695px;
+	left: 710px;
 }
 
 #text0 {
 	top: 440px;
 	left: 760px;
+	font-size: 14px;
+	font-family: "consolas";
 }
 
 #text1 {

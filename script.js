@@ -144,18 +144,24 @@ function change_menu_state() {
 }
 
 function launch_display_timeline() {
-  setTimeout(display_picture, 3000);
+  setTimeout(display_picture, 2000);
   setTimeout(display_timeline, 3500);
   setTimeout(display_block0, 4000);
   setTimeout(display_block1, 4200);
   setTimeout(display_block2, 4400);
   setTimeout(display_block3, 4600);
   setTimeout(display_block4, 4800);
+  setTimeout(display_contact, 5000);
 } 
 
 function display_picture() {
   picture = document.getElementById("picture_me_circle");
   picture.style.opacity = "1";
+}
+
+function display_contact() {
+  contactBox = document.getElementById("contact-container");
+  contactBox.style.opacity = "1";
 }
 
 function display_timeline() {

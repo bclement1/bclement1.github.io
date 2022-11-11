@@ -76,7 +76,7 @@ function display_response(indexes) {
     result_title.className = "article-home-title";
 
     let result_desc = document.createElement("p");
-    result_desc.innerHTML = articles_descs[index];
+    result_desc.innerHTML = articles_descs[index] + ".";
 	  result_desc.className = "article-home-desc";
    
     document.getElementById("search_results_area").appendChild(result_article); // ajout de l'article à la zone d'affichage

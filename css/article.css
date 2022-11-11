@@ -7,32 +7,50 @@
 article {
 	width: 60%;
 	margin: auto;
-	border-left: 1px solid #e0e0d1;
-	border-right: 1px solid #e0e0d1;
 	padding-left: 30px;
 	padding-right: 30px;
-	font-family: "osr";
-	font-size: 0.85em;
 	text-align: justify;
 }
 
 article img {
 	display: block;
-	width: 60%;
+	width: 40%;
 	margin: auto;
-	border: 3px solid white;
 }
 
-.code-in-article {
+.image-in-article {
 	width: 100%;
 }
 
 .article-home-title {
 	text-align: center;
-	font-weight: bold;
-	font-size: 1.3em;
+	font-size: 24px;
 }
 
 .article-pic-legend {
 	text-align: center;
+	font-size: 13px;
+}
+
+.article-keypoint {
+	font-size: 20px;
+}
+
+.article-subkeypoint {
+	font-size: 16px;
+}
+
+.article-home-desc {
+	font-size: 14px;
+	font-family: "opensanslight";
+	color: #ebebeb;
+}
+
+.code {
+	padding: 5px;
+	font-family: "consolas";
+	background-color: #e3dac9; /* #4c5863; /*#b5bec8; */
+	color: black;
+	border-radius: 3px;
+	font-size: 13px;
 }

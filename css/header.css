@@ -8,15 +8,14 @@
 	src: url("../fonts/opensanslight.ttf") format("truetype");
 }
 
-
 @font-face {
-	font-family: "osr";
-	src: url("../fonts/opensansregular.ttf") format("truetype");
+	font-family: "consolas";
+	src: url("../fonts/CONSOLA.TTF") format("truetype");
 }
 
 @font-face {
-	font-family: "raleway";
-	src: url("../fonts/raleway_regular.ttf") format("truetype");
+	font-family: "interlight";
+	src: url("../fonts/interlight.ttf") format("truetype");
 }
 
 #logo-icon {
@@ -103,38 +102,3 @@ footer {
 	font-size: 0.9em;
 	color: grey;
 }
-
-/*
-#night-mode-container {
-	position: absolute;
-	z-index: 0;
-	top: 100px;
-	right: 200px;
-	border-radius: 30px;
-	background: #ddd;
-	width: 55px;
-	height: 25px;
-}
-
-#night-mode-container label {
-	position: absolute;
-	z-index: 30;
-	top: 0px;
-	left: 0px;
-	width: 25px;
-	height: 25px;
-	background: #aaa;
-	border-radius: 50%;
-}
-
-#night-mode-checkbox {
-	display: block;
-	width: 70px;
-	height: 25px;
-	visibility: hidden;
-}
-
-#night-mode-checkbox:checked + label {
-	left: 30px;
-}
-*/
