@@ -1,2 +1,2 @@
 Code du blog Say it with Data!
-monblogdata.com
+https://bclement1.github.io
