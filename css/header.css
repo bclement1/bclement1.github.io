@@ -5,17 +5,12 @@
 
 @font-face {
 	font-family: "opensanslight";
-	src: url("../fonts/opensanslight.ttf") format("truetype");
+	src: url("../fonts/open-sans/open-sans-light.ttf") format("truetype");
 }
 
 @font-face {
 	font-family: "consolas";
-	src: url("../fonts/CONSOLA.TTF") format("truetype");
-}
-
-@font-face {
-	font-family: "interlight";
-	src: url("../fonts/interlight.ttf") format("truetype");
+	src: url("../fonts/consolas/consolas.ttf") format("truetype");
 }
 
 #logo-icon {
