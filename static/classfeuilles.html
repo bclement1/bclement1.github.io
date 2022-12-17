@@ -12,7 +12,7 @@
 		<script src="../script.js"></script>
 	</head>
 	<body onload="launch_display_menu();">
-		<img src="../icons/monblogdata_nuit.png" alt="Logo" id="logo-icon">
+		<img src="../icons/logo.svg" alt="Logo" id="logo-icon">
 		<header>
 			<div id="three_bars" onclick="change_menu_state()" >
 				<div id="bar1"></div>
@@ -63,7 +63,6 @@
 				On commence par importer les librairies nécessaires :
 			</p>
 			<br>
-			<!--
 			<div class="code">
 					# Librairies natives
 					<br>
@@ -80,7 +79,7 @@
 					# Librairies externes
 					<br>
 					<br>
-					import cv2 # openCV
+					import cv2
 					<br>
 					import keras
 					<br>
@@ -92,8 +91,6 @@
 					<br>
 					import tensorflow as tf
 			</div>
-			-->
-			<img src="../pictures/classfeuilles/cap0.png" class="image-in-article">
 			<br>
 			<p class="article-home-desc">
 				La première chose à faire est alors d'explorer le jeu de données pour en connaître la structure. Ce dernier étant structuré en dossiers (toutes les feuilles d'une même maladie par dossier), on affiche une image de chaque classe (ici, dans l'ordre : normal, nematodes, bactérie, virus, champignon) :
