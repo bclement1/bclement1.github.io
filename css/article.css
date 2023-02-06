@@ -12,6 +12,10 @@ article {
 	text-align: justify;
 }
 
+article p {
+	line-height: 30px;
+}
+
 article img {
 	display: block;
 	width: 40%;
@@ -47,10 +51,10 @@ article img {
 }
 
 .code {
-	padding: 5px;
+	padding: 10px;
 	font-family: "consolas";
-	background-color: #141122da;
+	background-color: #1d1f29d0;
 	color: #b7bec7;
-	border-radius: 4px;
+	border-radius: 8px;
 	font-size: 13px;
 }
