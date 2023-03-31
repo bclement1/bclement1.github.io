@@ -39,61 +39,51 @@
 			</p>
 			<br>
 			<p class="article-home-desc">
-				On souhaite étudier les maladies des feuilles et, plus particulièrement, parvenir à en classifier cinq d'entre elles grâce à un réseau de neurones. Les réseaux de neurones sont des modèles complexes, que l'on peut voir comme une composition de modèles simples (linéaires), connectés
-				entre eux par des fonctions d'activations, généralement non-linéaires.
+				On souhaite dans ce projet étudier certaines maladies affectant les feuilles des plantes et des arbres.
+				Plus particulièrement, on voudrait parvenir, à la donnée d'une feuille quelconque, à déterminer si elle est malade ou pas, et le cas échéant
+				à classifier le type de mal qui l'affecte. C'est un problème de classification multi-classes. En effet, nous allons faire l'hypothèse que chaque
+				feuille est soit saine, soit affectée par une unique maladie. La sortie du modèle de classification sera donc "1 choix parmi N classes".
 				<br>
 				<br>
-				La famille de réseaux de neurones la plus adaptée au traitement d'images est celle des réseaux de convolution (en anglais, Convolutionnal Neural
-				Network, abrégé en CNN). Ce type de modèles a gagné en popularité dans les années 90, avec notemment Handwritten Digit Recognition: Applications of Neural Net Chips and Automatic Learning
-				Il va pour cela nous falloir une base de données contenant des images de feuille, chacune labelisée avec le nom de la maladie en jeu.
+				Pour y arriver, nous allons utiliser un réseau de neurones de type CNN (réseau à convolutions).
+				Les réseaux de neurones sont une classe de modèles qui permettent de faire de la classification mais pas seulement.
+				On peut également faire de la régression ou de la génération de données. Pour schématiser, un réseau de neurones
+				est un embriquement (séquentiel le plus souvent) de sous-modèles linéaires, joints par des fonctions dites d'activation, qui sont
+				non-linéaires. Ce sont ces dernières qui permettent de briser la linéarité du modèle et qui lui permettent d'apprendre une représentation
+				complexe des données d'entrée.
 				<br>
 				<br>
-				J'ai trouvé la base de données sur le site <a href="https://www.kaggle.com/sizlingdhairya1/leaf-disease" style="color: #668cff; text-decoration: none;">Kaggle</a>.
+				La famille de réseaux de neurones la plus adaptée au traitement d'images est celle des réseaux de convolution (CNN).
+				Pour pouvoir entraîner le modèle a reconnaître les maladies des feuilles, il va nous falloir une base de données contenant des images déjà annotées.
+				Pour chaque image de la base, un label précisera si la feuille est malade ou non, et le cas échéant donnera le nom de la maladie.				<br>
 				<br>
-				Elle contient 239 images de feuille. 5 classes sont présentes : "Normal" (correspondant à des feuilles saines), "Bactérie", "Champignon", "Virus" et "Nématodes". Précisons que l'on travaillera avec des images en couleurs.
+				La base de données provient du site <a href="https://www.kaggle.com/sizlingdhairya1/leaf-disease" style="color: #668cff; text-decoration: none;">Kaggle</a>.
 				<br>
-				Pour classifier les feuilles selon leur maladie, on va utiliser un réseau de neurones. Une structure particulièrement adaptée à ce genre de problème est la structure convolutive, avec une ou plusieurs couches de convolution. Voyons cela en détail.
+				<br>
 			</p>
 			<br>
 			<p class="article-keypoint">
-				Importations et découverte des données
+				Chargement et découverte des données
+			</p>
+			<p class="article-home-desc">
+				La liste des librairies nécessaires au projet est disponible au début du notebook (accessible sur mon <a href="https://github.com/bclement1/classfeuilles" style="color: #668cff; text-decoration: none;">GitHub</a>).
 			</p>
 			<br>
 			<p class="article-home-desc">
-				On commence par importer les librairies nécessaires :
+				La première chose à faire est d'explorer le jeu de données pour en connaître la composition.
+				On va afficher une image de chaque maladie pour avoir un aperçu visuel de la diversité des classes.
 			</p>
 			<br>
-			<div class="code">
-					# Librairies natives
-					<br>
-					<br>
-					import os
-					<br>
-					import random
-					<br>
-					import warnings
-					<br>
-					warnings.filterwarnings('ignore')
-					<br>
-					<br>
-					# Librairies externes
-					<br>
-					<br>
-					import cv2
-					<br>
-					import keras
-					<br>
-					import matplotlib.pyplot as plt
-					<br>
-					import numpy as np
-					<br>
-					import pandas as pd
-					<br>
-					import tensorflow as tf
-			</div>
+			<img src="../pictures/classfeuilles/1.png" style="width: 80%;">
+			<br>
+			<img src="../pictures/classfeuilles/2.png" style="width: 80%;">
 			<br>
 			<p class="article-home-desc">
-				La première chose à faire est alors d'explorer le jeu de données pour en connaître la structure. Ce dernier étant structuré en dossiers (toutes les feuilles d'une même maladie par dossier), on affiche une image de chaque classe (ici, dans l'ordre : normal, nematodes, bactérie, virus, champignon) :
+				239 images annotées, c'est (très) peu, surtout pour entraîner un modèle d'apprentissage profond.
+				Ce sera l'occasion d'illustrer certaines techniques d'augmentation de données, afin de faire croître ce nombre avant de l'utiliser
+				pour entraîner un petit modèle.
+				Les images montrent des individus appartenant aux 5 classes du problème (dans l'ordre) :
+				feuille saine, feuille attaquée par des nématodes (vers), feuille attaquée par une bactérie, par un virus et enfin par un champignon.
 			</p>
 			<br>
 			<img src="../pictures/classfeuilles/norm.jpg">
@@ -107,24 +97,62 @@
 			<img src="../pictures/classfeuilles/fungi.jpg">
 			<br>
 			<br>
+			<p class="article-home-desc">
+				On peut enfin étudier la répartition des images dans chacune des classes :
+			</p>
+			<br>
+			<img src="../pictures/classfeuilles/3.png" style="width: 85%;">
+			<br>
+			<p class="article-home-desc">
+				Le résultat suggère que chacune des classes possèdent environ 50 représentants dans la base de donnée.
+				Avoir des classes équilibrées en nombre d'individus est bénéfique car le modèle aura plus tendance à apprendre de
+				manière parcimonieuse. En effet, à la limite où une classe est sur-représentée (dans l'ensemble d'entraînement et de validation),
+				il suffit au modèle de savoir correctement
+				gérer les exemples de cette classe pour minimiser sa fonction de coût lors de l'entraînement, ce qui n'est pas le but et risque
+				d'induire une forte erreur de généralisation (sur l'ensemble de test).
+			</p>
+			<br>
+			<br>
 			<p class="article-keypoint">
 				Préparation des données
 			</p>
 			<br>
 			<p class="article-home-desc">
-				Utilisons NumPy pour créer un array contenant les binômes image/label (les images sont sous forme de tableaux 23D). On fixe également la taille des images afin de toujours travailler à format identique :
+				Après avoir chargée les données en couples (image, annotation de classe), on va les mélanger pour avoir un ordre d'apparition aléatoire.
+			</p>
+			<br>
+			<img src="../pictures/classfeuilles/4.png" style="width: 100%;">
+			<br>
+			<p class="article-home-desc">
+				On normalise les valeurs RGB des données d'entrée (couleur) en les divisant par 255 (valeur maximale d'un pixel sur 8 bits).
+				Cela permettra d'optimiser la vitesse d'entraînement du modèle (marginalement ici, peut-être intéressant sur de plus gros modèles).
 				<br>
+				Ensuite, on va vectoriser les labels des données. Les labels sont pour l'instant des entiers (0 pour désigner une feuille saine
+				jusqu'à 4 pour désigner une feuille attaquée par un champignon). 
+				La fonction <a href="https://www.tensorflow.org/api_docs/python/tf/keras/utils/to_categorical" style="color: #668cff; text-decoration: none;">to_categorical</a>
+				de Tensorflow (API Python Keras) permet de convertir les labels en vecteurs à 5 composantes
+				(des 0 partout et un 1 au rang de la bonne classe, pour chaque classe possible parmi les 5).
+				On sera ainsi compatible avec la sortie du réseau de neurones, dont la dernière couche renvoie un vecteur de probabilité de la taille du
+				nombre de classes du problème. Nous le détaillerons plus loin, mais si le modèle possède ce format de sortie, c'est grâce à une activation
+				de type Softmax.
+			</p>
+			<br>
+			<img src="../pictures/classfeuilles/5.png" style="width: 90%;">
+			<br>
+			<br>
+			<br>
+			<p class="article-keypoint">
+				Augmentation des données puis découpage en jeux d'entraînement, de validation et de test
+			</p>
+			<p class="article-home-desc">
+				À ce stade, il faut nous demander quelles transformations sont applicables aux données pour augmenter le nombre
+				d'images dans la base d'entraînement, tout en préservant la nature des données.
+				Toutes les opérations ne sont pas permises. Par exemple, si l'on souhaitait construire un modèle de reconnaissance 
+				de chiffres manuscrits, effectuer une rotation à 180° des images d'entrées transformerait les 6 en 9, ce qui changerait
+				la signification des données (et l'on souhaite absolument l'éviter car cela induit un coût de ré-annotation, ce qui va à contre-sens
+				de ce que l'on essaie de faire ici).
 				<br>
-				<img src="../pictures/classfeuilles/cap3.png" class="image-in-article">
-				<br>
-				D'abord, on augmente les données en mélangeant leur ordre d'apparition (avec numpy.random.shuffle) et on les normalise en les divisant par 255.0 (la valeur maximale d'un pixel), cela afin d'optimiser la vitesse d'entraînement du futur réseau de neurones.
-				<br>
-				Ensuite, on effectue une transformation "string to digit" pour convertir les labels du format <i>string</i> en vecteurs numériques à 5 composantes (des 0 partout et un 1 au rang de la bonne classe, pour chaque classe possible parmi les 5). C'est la fonction <i>to_categorical</i> de Keras qui permet de faire cela. On sera ainsi compatible avec la sortie du réseau futur (qui renvoie des vecteurs de probabilité, nous le détaillerons) :
-				<br>
-				<br>
-				<img src="../pictures/classfeuilles/labcor.png" class="image-in-article">
-				<br>
-				<br>
+				Les opérations que l'on va effectuer sont les suivantes :
 				Enfin, on utilise un objet permettant d'appliquer des rotations et des translations sur les images de la base de données (l'objet agit directement sur les tableaux 2D) :
 				<br>
 				<br>
@@ -133,7 +161,7 @@
 			<br>
 			<br>
 			<p class="article-keypoint">
-				Séparation des données et construction du réseau de neurones
+				Construction du modèle
 			</p>
 			<br>
 			<p class="article-home-desc">
